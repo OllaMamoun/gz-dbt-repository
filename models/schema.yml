@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: gz_raw_data
+    description: raw data gz from le wagon
+    tables:
+      - name: raw_gz_sales
+        description: sales of products 
+      - name: raw_gz_product
+        description: product description 
+      - name: raw_gz_ship
+        description: shipping information 
