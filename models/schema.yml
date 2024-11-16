@@ -6,6 +6,9 @@ sources:
     tables:
       - name: raw_gz_sales
         description: sales of products 
+        loaded_at_field: "CAST(date_date AS TIMESTAMP)" 
+        freshness: 
+          warn_after: {count: 90, period: day}
         columns:
           - name: date_date
             description: date when the order is made 
