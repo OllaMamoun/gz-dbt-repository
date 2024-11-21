@@ -54,5 +54,22 @@ sources:
             description: Cost of shipping the order
 
 
+  - name: raw_gz_adwords_copy
+    tables:
+      - name: adwords
+  - name: raw_gz_bing_copy
+    tables:
+      - name: bing
+  - name: raw_gz_criteo_copy
+    tables:
+      - name: criteo
+  - name: raw_gz_facebook_copy
+    tables:
+      - name: facebook
+
+
+ 
+        
+
       
 
