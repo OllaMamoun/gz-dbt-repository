@@ -1,0 +1,75 @@
+version: 2
+
+sources:
+  - name: gz_raw_data
+    description: raw data gz from le wagon
+    tables:
+      - name: raw_gz_sales
+        description: sales of products 
+        loaded_at_field: "CAST(date_date AS TIMESTAMP)" 
+        freshness: 
+          warn_after: {count: 90, period: day}
+        columns:
+          - name: date_date
+            description: date when the order is made 
+          - name: orders_id
+            description: ID of the order
+          - name: pdt_id
+            description: ID of the product 
+          - name: revenue
+            description: revenue made from this order
+          - name: quantity
+            description: number of  products sold in this order
+        tests:
+          - unique:
+              column_name: "(orders_id || '_' || pdt_id)"
+
+
+      -  name: raw_gz_product
+         description: product description 
+         columns:
+          - name: products_id
+            description: ID of the product 
+            tests:
+              - unique
+              - not_null
+          - name: purchSE_price
+            description: purchase price of the product 
+          
+            
+              
+      - name: raw_gz_ship
+        description: shipping information 
+        columns:
+          - name: orders_id
+            description: ID of the order
+            tests:
+              - unique
+              - not_null
+          - name: shipping_fee
+            description: shipping fee for the order
+          - name: logCost
+            description: Logarithmic of the shipping cost 
+          - name: ship_cost
+            description: Cost of shipping the order
+
+
+  - name: raw_gz_adwords_copy
+    tables:
+      - name: adwords
+  - name: raw_gz_bing_copy
+    tables:
+      - name: bing
+  - name: raw_gz_criteo_copy
+    tables:
+      - name: criteo
+  - name: raw_gz_facebook_copy
+    tables:
+      - name: facebook
+
+
+ 
+        
+
+      
+
